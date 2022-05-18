@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import './index.css';
+import './body.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+	return (
+
+    // there's gotta be 5 pages:
+    //
+    // home for the whole song list
+    // song, which is the main learning page
+    // add song to add songs
+    // favorite songs to see only the favorite songs list
+    // sentences for the anki deck generator page
+		<div className="App">
+			<BrowserRouter>
+				<Switch>
+					<Route exact path="/" component={ HomePage } />
+					<Route path="/song" component={ SongPage } />
+					<Route path="/add" component={ AddPage } />
+					<Route path="/favorites" component={ FavoritesPage } />
+          <Route path="/sentences" component={ SentencesPage } />
+				</Switch>
+			</BrowserRouter>
+		</div>
+	);
 }
 
 export default App;
