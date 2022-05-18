@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 export default function Header() {
   return (
     <header className='bg-black text-salmon-two flex justify-between'>
-      <Link to='/'>
+      <Link className='ml-5' to='/'>
         <h1 className='text-5xl'>L2L</h1>
         <p>Lyrics to Languages</p>
       </Link>
