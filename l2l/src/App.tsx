@@ -1,19 +1,14 @@
-import { Link } from 'react-router-dom';
 import Main from './Main';
+import Header from './components/Header';
+import './index.css';
+
 
 export default function App() {
   return (
     <div>
-      <header>
-        <nav>
-          <Link to='/'>HomePage</Link>
-          <Link to='/song'>SongPage</Link>
-          <Link to='/add'>AddPage</Link>
-          <Link to='/favorites'>FavoritesPage</Link>
-          <Link to='/sentences'>SentencesPage</Link>
-        </nav>
-      </header>
+      <Header />
       <Main />       
     </div>
   )
 }
+
