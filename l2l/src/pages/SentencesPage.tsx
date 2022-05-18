@@ -1,4 +1,4 @@
-function SentencesPage() {
+const SentencesPage: React.FC = () => {
   return (
     <div>
       <h1>hi</h1>

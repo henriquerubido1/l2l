@@ -1,4 +1,7 @@
 module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
     screens: {
       sm: '480px',
@@ -13,12 +16,12 @@ module.exports = {
       'darker-zinc': '#18181b',
       'black': '#171717',
       'salmon': '#f87171',
-      'salmon2': '#fca5a5',
-      'salmon3': '#fda4af',
+      'salmon-two': '#fca5a5',
+      'salmon-three': '#fda4af',
     },
     fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
+      sans: ['Graphik', 'sans-serif'],
     },
     extend: {
       spacing: {

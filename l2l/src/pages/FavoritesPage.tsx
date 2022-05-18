@@ -1,4 +1,4 @@
-function FavoritesPage() {
+const FavoritesPage: React.FC = () => {
   return (
     <div>
       <h1>hi</h1>

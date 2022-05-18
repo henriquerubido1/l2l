@@ -1,4 +1,4 @@
-function SongPage() {
+const SongPage: React.FC = () => {
   return (
     <div>
       <h1>hi</h1>
