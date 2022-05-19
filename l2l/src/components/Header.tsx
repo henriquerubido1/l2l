@@ -9,7 +9,6 @@ export default function Header() {
       </Link>
       <nav>
         <Link className="text-xl leading-loose font-bold p-5 hover:underline" to='/add'>Add</Link>
-        <Link className="text-xl leading-loose font-bold p-5 hover:underline" to='/song'>Song</Link>
         <Link className="text-xl leading-loose font-bold p-5 hover:underline" to='/'>Home</Link>
         <Link className="text-xl leading-loose font-bold p-5 hover:underline" to='/favorites'>Favorites</Link>
         <Link className="text-xl leading-loose font-bold p-5 hover:underline" to='/sentences'>Sentences</Link>
