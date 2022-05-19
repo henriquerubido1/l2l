@@ -7,6 +7,8 @@ export type SongCard = {
   youtubeUrl: string;
   thumbnailUrl?: string;
   lyrics: string;
+  favorite: boolean;
+  token: string;
 }
 
 const AddPage: React.FC = () => {
@@ -16,11 +18,25 @@ const AddPage: React.FC = () => {
   const [ youtubeUrl, setYoutubeUrl ] = useState<string>('');
   const [ thumbnailUrl, setThumbnailUrl ] = useState<string>('');
   const [ lyrics, setLyrics ] = useState<string>('');
-  const [ songsArr, setSongsArr ] = useState<SongCard[]>([])
+  let songsArr: SongCard[] = [];
 
   // useEffect(() => {
   //   setSongsArr(localStorage.getItem(songsArr))
   // }, []);
+
+  function generate_token(){
+    //edit the token allowed characters
+    let a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".split("");
+    let b = [];  
+    for (let i = 0; i < 6; i += 1) {
+        let j: any = (Math.random() * (a.length-1)).toFixed(0);
+        b[i] = a[j];
+    }
+    
+    const token = b.join("");
+    
+    return token;
+}
 
   function saveSong() {
     const currentSong: SongCard = {
@@ -30,12 +46,22 @@ const AddPage: React.FC = () => {
       youtubeUrl,
       thumbnailUrl,
       lyrics,
+      favorite: false,
+      token: generate_token(),
     }
 
-    setSongsArr([...songsArr, currentSong]);
-    
+    const getArr: string | null = localStorage.getItem('songs')
+
+    if (getArr !== null) {
+      songsArr = [...songsArr, ...JSON.parse(getArr)];
+    } 
+
+    songsArr = [...songsArr, currentSong]
+
     localStorage.setItem('songs', JSON.stringify(songsArr))
   };
+
+
 
   return (
     <div className="mt-5">
@@ -96,7 +122,7 @@ const AddPage: React.FC = () => {
         />
         <button
           className="bg-salmon w-40 p-3 mt-3 rounded-md text-white self-center border border-white-500 opacity-75 hover:opacity-100"
-          type="button"
+          type="submit"
           onClick={ saveSong }
         >
           Add Song
