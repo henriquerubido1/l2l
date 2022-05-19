@@ -20,9 +20,7 @@ const AddPage: React.FC = () => {
   const [ lyrics, setLyrics ] = useState<string>('');
   let songsArr: SongCard[] = [];
 
-  // useEffect(() => {
-  //   setSongsArr(localStorage.getItem(songsArr))
-  // }, []);
+  // https://stackoverflow.com/questions/8532406/create-a-random-token-in-javascript-based-on-user-details
 
   function generate_token(){
     //edit the token allowed characters
@@ -83,6 +81,7 @@ const AddPage: React.FC = () => {
           type="text"
           id="artist"
           placeholder="artist name"
+          maxLength={14}
           required
         />
         <input
@@ -92,6 +91,7 @@ const AddPage: React.FC = () => {
           type="text"
           id="song"
           placeholder="song name"
+          maxLength={16}
           required
         />
         <input
