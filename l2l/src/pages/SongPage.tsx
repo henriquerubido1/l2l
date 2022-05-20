@@ -9,7 +9,7 @@ const SongPage: React.FC = () => {
   const getSongs = localStorage.getItem('songs');
   const parseSongs = typeof getSongs === 'string' && JSON.parse(getSongs);
   const findSong: SongCard = parseSongs.find((song: any) => song.token === splitPathname[2]);
-  const [ notes, setNotes ] = useState<string>('');
+  const [ notes, setNotes ] = useState<string>('notes translation:');
   
   return (
     <div className="text-white">
@@ -36,7 +36,12 @@ const SongPage: React.FC = () => {
             placeholder="take notes!"
             required
           />
+          <div className="flex justify-center w-11/12">
+            <button className="font-bold bg-salmon border border-white rounded-l-md w-1/6 p-2 my-5">Translate</button>
+            <button className="font-bold bg-salmon border border-white rounded-r-md w-1/6 p-2 my-5">Save</button>
+          </div>
           <div className="p-2 ml-10 w-5/6 h-80 rounded-md bg-black border border-salmon text-xl">
+            <p>{notes}</p>
           </div>
         </div>
       </div>
