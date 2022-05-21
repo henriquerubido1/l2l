@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { SongCard } from "./AddPage";
 import ReactPlayer from "react-player";
+import { translator } from "../services/translations";
 
 const SongPage: React.FC = () => {
   const location = useLocation();
@@ -10,6 +11,12 @@ const SongPage: React.FC = () => {
   const parseSongs = typeof getSongs === 'string' && JSON.parse(getSongs);
   const findSong: SongCard = parseSongs.find((song: any) => song.token === splitPathname[2]);
   const [ notes, setNotes ] = useState<string>('notes translation:');
+  const [ translation, setTranslation] = useState<string[]>([])
+  const getTranslation: any = translator(translation, findSong.targetLang, findSong.userLang);
+
+  function translate () {
+    setTranslation(notes.split('\n'))
+  }
   
   return (
     <div className="text-white">
@@ -38,10 +45,16 @@ const SongPage: React.FC = () => {
             required
           />
           <div className="flex w-11/12 mx-12">
-            <button className="font-bold bg-salmon border border-white rounded-l-md w-1/5 p-2 my-5">Translate</button>
+            <button
+              onClick={ translate }
+              className="font-bold bg-salmon border border-white rounded-l-md w-1/5 p-2 my-5"
+            >
+              Translate
+            </button>
             <button className="font-bold bg-salmon border border-white rounded-r-md w-1/5 p-2 my-5">Save</button>
           </div>
           <div className="p-2 w-3/6 h-80 rounded-md bg-black border border-salmon text-xl">
+            { translation.map(sentence => <p>{ getTranslation }</p>)}
           </div>
         </div>
       </div>

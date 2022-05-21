@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 export type SongCard = {
-  language: string;
+  targetLang: string;
+  userLang: string;
   artist: string;
   song: string;
   youtubeUrl: string;
@@ -12,12 +13,43 @@ export type SongCard = {
 }
 
 const AddPage: React.FC = () => {
-  const [ language, setLanguage ] = useState<string>('');
+  const [ targetLang, setTargetLang ] = useState<string>('');
+  const [ userLang, setUserLang ] = useState<string>('');
   const [ artist, setArtist ] = useState<string>('');
   const [ song, setSong ] = useState<string>('');
   const [ youtubeUrl, setYoutubeUrl ] = useState<string>('');
   const [ thumbnailUrl, setThumbnailUrl ] = useState<string>('');
   const [ lyrics, setLyrics ] = useState<string>('');
+
+  const langs1 = ['your language',
+                 'af', 'ar', 'bn',
+                 'cs', 'da', 'de',
+                 'en', 'es', 'fa',
+                 'fr', 'he', 'hi',
+                 'hu', 'id', 'it',
+                 'ja', 'ko', 'la',
+                 'nl', 'no', 'pl',
+                 'pt', 'ro', 'ru',
+                 'sv', 'tl', 'tr',
+                 'uk', 'vi', 'zh',
+                 'zu'];
+
+const langs2 = ['target language',
+                'af', 'ar', 'bn',
+                'cs', 'da', 'de',
+                'en', 'es', 'fa',
+                'fr', 'he', 'hi',
+                'hu', 'id', 'it',
+                'ja', 'ko', 'la',
+                'nl', 'no', 'pl',
+                'pt', 'ro', 'ru',
+                'sv', 'tl', 'tr',
+                'uk', 'vi', 'zh',
+                'zu'];
+
+  const mapLangs1 = langs1.map(lang => <option>{ lang }</option>);
+  const mapLangs2 = langs2.map(lang => <option>{ lang }</option>);           
+
   let songsArr: SongCard[] = [];
 
   // https://stackoverflow.com/questions/8532406/create-a-random-token-in-javascript-based-on-user-details
@@ -38,7 +70,8 @@ const AddPage: React.FC = () => {
 
   function saveSong() {
     const currentSong: SongCard = {
-      language,
+      targetLang,
+      userLang,
       artist,
       song,
       youtubeUrl,
@@ -65,15 +98,24 @@ const AddPage: React.FC = () => {
     <div className="mt-5">
       <h1 className="ml-5 text-2xl text-white">Add a new Song!</h1>
       <form className="flex flex-col mt-5 text-xl">
-        <input
-          value={ language }
-          onChange={ (e) => setLanguage(e.target.value) }
-          className="p-2 m-4 w-3/6 self-center rounded-md"
-          type="text"
-          id="language"
-          placeholder="target language"
-          required
-        />
+          <select
+            className="p-2 m-4 w-3/6 self-center rounded-md bg-white"
+            value={ userLang }
+            onChange={ (e) => setUserLang(e.target.value) }
+            id="userLang"
+            required
+          >
+            { mapLangs1 }
+          </select>
+          <select
+            className="p-2 m-4 w-3/6 self-center rounded-md bg-white"
+            value={ targetLang }
+            onChange={ (e) => setTargetLang(e.target.value) }
+            id="targetLang"
+            required
+          >
+            { mapLangs2 }
+          </select>
         <input
           value={ artist }
           onChange={ (e) => setArtist(e.target.value) }

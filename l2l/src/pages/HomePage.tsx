@@ -23,7 +23,7 @@ const HomePage: React.FC = () => {
             }
             <h3 className="max-w-fit m-2 font-bold">{ song.song }</h3>
             <h4 className="max-w-fit m-2 text-light-gray opacity-75">{ song.artist }</h4>
-            <h4 className="m-2 text-bold">{ song.language }</h4>
+            <h4 className="m-2 text-bold">{ song.targetLang }</h4>
             </Link>
           ))
         )}
