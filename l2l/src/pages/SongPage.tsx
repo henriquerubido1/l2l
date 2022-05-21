@@ -28,20 +28,20 @@ const SongPage: React.FC = () => {
         <div className="ml-10 bg-black border border-salmon rounded-md p-2">
           { findSong.lyrics.split('\n').map(line => <p className="text-2xl m-1">{ line }</p>)}
         </div>
-        <div className="ml-5 w-3/5">
+        <div className="w-5/12 fixed left-3/4">
           <textarea
-            className="p-2 ml-10 w-5/6 h-80 rounded-md bg-black border border-salmon text-xl"
+            className="p-2 w-3/6 h-80 rounded-md bg-black border border-salmon text-xl"
+            onChange={ (e) => setNotes(e.target.value) }
             cols={10}
             rows={10}
             placeholder="take notes!"
             required
           />
-          <div className="flex justify-center w-11/12">
-            <button className="font-bold bg-salmon border border-white rounded-l-md w-1/6 p-2 my-5">Translate</button>
-            <button className="font-bold bg-salmon border border-white rounded-r-md w-1/6 p-2 my-5">Save</button>
+          <div className="flex w-11/12 mx-12">
+            <button className="font-bold bg-salmon border border-white rounded-l-md w-1/5 p-2 my-5">Translate</button>
+            <button className="font-bold bg-salmon border border-white rounded-r-md w-1/5 p-2 my-5">Save</button>
           </div>
-          <div className="p-2 ml-10 w-5/6 h-80 rounded-md bg-black border border-salmon text-xl">
-            <p>{notes}</p>
+          <div className="p-2 w-3/6 h-80 rounded-md bg-black border border-salmon text-xl">
           </div>
         </div>
       </div>
